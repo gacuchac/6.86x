@@ -37,6 +37,15 @@ def hinge_loss_single(feature_vector, label, theta, theta_0):
     given data point and parameters.
     """
     # Your code here
+    dot_multiplication = np.matmul(theta,feature_vector)
+    #print("DOT:" + str(dot_multiplication))
+    loss = label*(dot_multiplication + theta_0)
+    hinge_loss = 0
+    if loss >= 1:
+        hinge_loss = 0
+    else :
+        hinge_loss = 1 - loss
+    return hinge_loss
     raise NotImplementedError
 #pragma: coderesponse end
 
@@ -61,6 +70,18 @@ def hinge_loss_full(feature_matrix, labels, theta, theta_0):
     loss across all of the points in the feature matrix.
     """
     # Your code here
+    hinge_loss_array = []
+    hinge_loss = 0
+    num_rows = feature_matrix.shape[0]
+    for i in range(num_rows) :
+        hinge_loss_row = hinge_loss_single(feature_matrix[i],labels[i], theta, theta_0)
+        hinge_loss_array.append(hinge_loss_row)
+    hinge_loss_avg = np.average(hinge_loss_array)
+    if hinge_loss_avg >= 1:
+        hinge_loss = 0
+    else :
+        hinge_loss = hinge_loss_avg
+    return hinge_loss
     raise NotImplementedError
 #pragma: coderesponse end
 
