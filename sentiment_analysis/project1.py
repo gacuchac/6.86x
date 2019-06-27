@@ -110,6 +110,13 @@ def perceptron_single_step_update(
     completed.
     """
     # Your code here
+    theta = current_theta
+    theta_0 = current_theta_0
+    loss = label*(np.matmul(theta,feature_vector) + current_theta_0)
+    if loss <= 0 :     
+        theta = current_theta + label*feature_vector
+        theta_0 = current_theta_0 + label
+    return (theta, theta_0)
     raise NotImplementedError
 #pragma: coderesponse end
 
@@ -141,10 +148,13 @@ def perceptron(feature_matrix, labels, T):
     the feature matrix.
     """
     # Your code here
+    theta = np.zeros(feature_matrix.shape[1])
+    theta_0 = 0
     for t in range(T):
         for i in get_order(feature_matrix.shape[0]):
             # Your code here
-            pass
+            theta, theta_0 = perceptron_single_step_update(feature_matrix[i], labels[i], theta, theta_0)
+    return (theta, theta_0)
     raise NotImplementedError
 #pragma: coderesponse end
 
