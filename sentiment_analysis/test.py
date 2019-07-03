@@ -250,7 +250,7 @@ def check_pegasos_single_update():
     L = 0.648361367368492
     eta = 0.578593048762735
     exp_res = ([-0.1157625, -0.1679902, 0.1321155, 0.0013579, -0.0741239, -0.0283304, -0.2510142, -0.2033267, -0.2338044, 0.1940591], 1.3705607)
-    print(p1.pegasos_single_step_update(feature_vector,label,L,eta,theta,theta_0))
+    #print(p1.pegasos_single_step_update(feature_vector,label,L,eta,theta,theta_0))
    
 
     feature_vector = np.array([1, 1])
