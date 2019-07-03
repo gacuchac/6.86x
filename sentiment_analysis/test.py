@@ -243,16 +243,15 @@ def check_average_perceptron():
 def check_pegasos_single_update():
     ex_name = "Pegasos single update"
 
-    feature_vector = np.array([1, 2])
-    label, theta, theta_0 = 1, np.array([-1, 1]), -1.5
-    L = 0.2
-    eta = 0.1
-    exp_res = (np.array([-0.88, 1.18]), -1.4)
-    if check_tuple(
-            ex_name, p1.pegasos_single_step_update,
-            exp_res,
-            feature_vector, label, L, eta, theta, theta_0):
-        return
+    feature_vector = np.array([ 0.31194945,  0.42166122, -0.19703458,  0.26539361,  0.23702722, -0.34867427,  0.40713055, -0.47773811, -0.17223556, -0.09020401])
+    label = 1
+    theta = np.array([-0.18526073, -0.26884341,  0.21143132,  0.00217306, -0.11862429, -0.04533868, -0.40171096, -0.3253942,  -0.3741693,   0.31056276]) 
+    theta_0 = 1.3705606774690242
+    L = 0.648361367368492
+    eta = 0.578593048762735
+    exp_res = ([-0.1157625, -0.1679902, 0.1321155, 0.0013579, -0.0741239, -0.0283304, -0.2510142, -0.2033267, -0.2338044, 0.1940591], 1.3705607)
+    print(p1.pegasos_single_step_update(feature_vector,label,L,eta,theta,theta_0))
+   
 
     feature_vector = np.array([1, 1])
     label, theta, theta_0 = 1, np.array([-1, 1]), 1

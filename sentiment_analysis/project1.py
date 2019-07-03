@@ -234,6 +234,18 @@ def pegasos_single_step_update(
     completed.
     """
     # Your code here
+    prediction = np.matmul(current_theta, feature_vector)
+    label_prediction = label*(prediction + current_theta_0)
+    theta = current_theta
+    theta_0 = current_theta_0
+    print('label*prediction = ' + str(label_prediction))
+    if label_prediction <= 1 :
+        theta = (1 - eta*L)*current_theta + eta*label*feature_vector
+        theta_0 = current_theta_0 + eta*label
+    else :
+        theta = (1 - eta*L)*current_theta
+        
+    return (theta, theta_0)
     raise NotImplementedError
 #pragma: coderesponse end
 
